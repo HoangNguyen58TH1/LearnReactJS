@@ -1,8 +1,8 @@
-function TodoItem() {
+function TodoItem(props) {
   return (
     <div className="Todo">
-      <h5>This is TodoItem</h5>
-      <p>Create by H</p>
+      {/* <h5>This is {props.key}</h5> */}
+      <h5>This is {props.salary}</h5>
     </div>
   );
 }
