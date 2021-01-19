@@ -1,8 +1,14 @@
+import './TodoItem.css'
+
 function TodoItem(props) {
+  let className = 'TodoItem';
+  if (props.salary.isCompleted == true){
+    className += ' TodoItem-complete'
+  }
+
   return (
-    <div className="Todo">
-      {/* <h5>This is {props.key}</h5> */}
-      <h5>This is {props.salary}</h5>
+    <div className={className}>
+      <input type="checkbox" /> This is {props.salary.title}
     </div>
   );
 }
