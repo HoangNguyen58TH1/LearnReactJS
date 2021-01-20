@@ -11,10 +11,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         {
-          todoItems.map((item, index) =>
+          todoItems.length > 0 && todoItems.map((item, index) =>
             <TodoItem key={index} salary={item} />
           )
         }
+        { todoItems.length === 0 && 'Nothings here.' }
       </header>
     </div>
   );
