@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import TodoItem from './components/TodoItem';
-// import TrafficLight from './components/TrafficLight';
+import tick from './images/tick_all.svg'
 
 class App extends Component {
   constructor() {
@@ -21,6 +21,7 @@ class App extends Component {
       const isComplete = item.isComplete;
       const { todoItems } = this.state;
       const index = todoItems.indexOf(item)
+      console.log('isComplete', isComplete);
       this.setState({
         todoItems: [
           ...todoItems.slice(0, index),
@@ -36,8 +37,12 @@ class App extends Component {
   
   render() {
     const { todoItems } = this.state
-    return (
+      return (
       <div className="App"> 
+        <div className="Header">
+          <img src={tick} width="32" height="32" />
+          <input type="text" placeholder="Add a new item" />
+        </div>
         {
           todoItems.length > 0 && todoItems.map((item, index) => (
             <TodoItem key={index} item={item} onClick={this.onItemClicked(item) } />
