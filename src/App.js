@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import TodoItem from './components/TodoItem';
 import tick from './images/tick_all.svg'
+import Accordion from './components/Accordion.js'
 
 class App extends Component {
   constructor() {
@@ -63,7 +64,7 @@ class App extends Component {
     const { todoItems, newItem } = this.state
       return (
       <div className="App"> 
-        <div className="Header">
+        {/* <div className="Header">
           <img src={tick} width="32" height="32" />
           <input 
             type="text" 
@@ -78,8 +79,11 @@ class App extends Component {
             <TodoItem key={index} item={item} onClick={this.onItemClicked(item) } />
           ))
         }
-          
-        { todoItems.length === 0 && 'Nothings here.' }
+        { todoItems.length === 0 && 'Nothings here.' } */}
+
+        <Accordion heading="hoang">
+          content children
+        </Accordion>
       </div>
     );
   }
