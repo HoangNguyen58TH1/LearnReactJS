@@ -1,22 +1,35 @@
+import { Component } from 'react';
 import './TodoItem.css'
-var classNames = require('classnames');
+import classNames from 'classnames';
 
-function TodoItem(props) {
-  // let className = 'TodoItem';
-  // if (props.salary.isCompleted == true){
-  //     className += ' TodoItem-complete'
-  //   }
-  // (props.salary.isCompleted == true) && (className += ' TodoItem-complete')
+class TodoItem extends Component {
+  // constructor() {
+  //   super();
+  //   this.onItemClick = this.onItemClick.bind(this);
+  // }
 
-  var className = classNames('TodoItem',  {
-    'TodoItem-complete': props.salary.isCompleted
-  });
+  // onItemClick() {
+  //   this.props.item.isComplete = !this.props.item.isComplete;
+  //   console.log(this.props.item);
+  // }
 
-  return (
-    <div className={className}>
-      <input type="checkbox" /> This is {props.salary.title}
-    </div>
-  );
+  // onItemClick = () => {
+  //   console.log(this.props.item);
+  // }
+
+  render() {
+    const { item, onClick } = this.props;
+    return (
+      // <div onClick={this.onItemClick.bind(this)} className={classNames('TodoItem', {
+      // <div onClick={() => this.onItemClick()} className={classNames('TodoItem', {
+      // <div onClick={this.onItemClick} className={classNames('TodoItem', {
+      <div onClick={onClick} className={classNames('TodoItem', {
+        'TodoItem-complete': item.isComplete
+      })}>
+        {item.title}
+      </div>
+    );
+  }
 }
 
 export default TodoItem;

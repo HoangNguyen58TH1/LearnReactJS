@@ -1,41 +1,50 @@
 import React, { Component } from 'react';
 import './App.css';
-import TrafficLight from './components/TrafficLight';
-
-const RED = 0;
-const YELLOW = 1;
-const GREEN = 2;
+import TodoItem from './components/TodoItem';
+// import TrafficLight from './components/TrafficLight';
 
 class App extends Component {
   constructor() {
     super();
-    this.state = { 
-      currentColor: RED
-    }
 
-    setInterval(() => {
+    this.state = {
+      todoItems: [
+        { title: 'Đi chơi', isComplete: false },
+        { title: 'Đi đá banh', isComplete: true },
+        { title: 'Đi tập gym', isComplete: false }
+      ]
+    }
+  }
+
+  onItemClicked(item) {
+    return () => {
+      const isComplete = item.isComplete;
+      const { todoItems } = this.state;
+      const index = todoItems.indexOf(item)
       this.setState({
-        currentColor: this.getNextColor(this.state.currentColor)
+        todoItems: [
+          ...todoItems.slice(0, index),
+          {
+            ...item,
+            isComplete: !isComplete
+          },
+          ...todoItems.slice(index + 1)
+        ]
       })
-    }, 1000)
-  }
-
-  getNextColor(color) {
-    switch(color) {
-      case RED:
-        return YELLOW;
-      case YELLOW:
-        return GREEN;
-      default:
-        return RED;
     }
   }
-
+  
   render() {
-    const { currentColor } = this.state;
+    const { todoItems } = this.state
     return (
-      <div className="App">
-        <TrafficLight currentColor={ currentColor } />
+      <div className="App"> 
+        {
+          todoItems.length > 0 && todoItems.map((item, index) => (
+            <TodoItem key={index} item={item} onClick={this.onItemClicked(item) } />
+          ))
+        }
+          
+        { todoItems.length === 0 && 'Nothings here.' }
       </div>
     );
   }
