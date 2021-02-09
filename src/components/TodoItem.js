@@ -1,22 +1,27 @@
+import { Component } from 'react';
 import './TodoItem.css'
-var classNames = require('classnames');
+import classNames from 'classnames';
+import checkImg from '../images/check.svg'
+import checkCompletedImg from '../images/check-completed.svg'
 
-function TodoItem(props) {
-  // let className = 'TodoItem';
-  // if (props.salary.isCompleted == true){
-  //     className += ' TodoItem-complete'
-  //   }
-  // (props.salary.isCompleted == true) && (className += ' TodoItem-complete')
+class TodoItem extends Component {
 
-  var className = classNames('TodoItem',  {
-    'TodoItem-complete': props.salary.isCompleted
-  });
+  render() {
+    const { item, onClick } = this.props;
+    let url = checkImg
+    if (item.isComplete) {
+      url = checkCompletedImg
+    }
 
-  return (
-    <div className={className}>
-      <input type="checkbox" /> This is {props.salary.title}
-    </div>
-  );
+    return (
+      <div className={classNames('TodoItem', {
+        'TodoItem-complete': item.isComplete
+      })}>
+        <img onClick={onClick} src={url} width="32" height="32" />
+        <span>{item.title}</span>
+      </div>
+    );
+  }
 }
 
 export default TodoItem;
