@@ -17,6 +17,12 @@ class App extends Component {
     }
     this.onKeyUp = this.onKeyUp.bind(this);
     this.onChange = this.onChange.bind(this);
+
+    this.inputElementabc = React.createRef();
+  }
+  
+  componentDidMount() {
+    this.inputElementabc.current.focus();
   }
 
   onItemClicked(item) {
@@ -72,6 +78,7 @@ class App extends Component {
             value={newItem}
             onChange={this.onChange}
             onKeyUp={this.onKeyUp}
+            ref={this.inputElementabc}
           />
         </div>
         {

@@ -21,7 +21,8 @@
 }
 
 .Header input:focus {
-  outline: none;
+  /* outline: none; */
+  outline: 1px solid blue;
 }
 
 .Header input::placeholder {
