@@ -3,6 +3,7 @@ import './App.css';
 import TodoItem from './components/TodoItem';
 import tick from './images/tick_all.svg'
 // import Accordion from './components/Accordion.js'
+import Counter from './components/Counter.js'
 
 class App extends Component {
   constructor() {
@@ -13,7 +14,8 @@ class App extends Component {
         { title: 'Đi chơi', isComplete: false },
         { title: 'Đi đá banh', isComplete: true },
         { title: 'Đi tập gym', isComplete: false }
-      ]
+      ],
+      showCounter: true
     }
     this.onKeyUp = this.onKeyUp.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -24,7 +26,7 @@ class App extends Component {
   componentDidMount() {
     this.inputElementabc.current.focus();
   }
-
+  
   onItemClicked(item) {
     return () => {
       const isComplete = item.isComplete;
@@ -65,9 +67,20 @@ class App extends Component {
       newItem: event.target.value
     })
   }
+
+  componentDidUpdate() {
+    console.log('App updated');
+  }
+
+  removeCounter() {
+    this.setState({
+      showCounter: false
+    })
+  }
   
   render() {
     const { todoItems, newItem } = this.state
+    console.log('App render');
       return (
       <div className="App"> 
         <div className="Header">
@@ -91,6 +104,10 @@ class App extends Component {
         {/* <Accordion heading="hoang">
           content children
         </Accordion> */}
+        <button onClick={() => this.removeCounter()}>
+          Remove Counter
+        </button>
+        { this.state.showCounter && <Counter /> }
       </div>
     );
   }
