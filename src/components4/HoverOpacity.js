@@ -24,7 +24,8 @@ export default class HoverOpacity extends Component {
     return (
       <div
         style={{
-          opacity: this.state.isHovered ? 0.5 : 1
+          opacity: this.state.isHovered ? 0.5 : 1,
+          display: 'inline-block'
         }}
         onMouseEnter={this.onMouseEnter.bind(this)}
         onMouseLeave={this.onMouseLeave.bind(this)}
