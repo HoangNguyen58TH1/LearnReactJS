@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, {Component} from 'react';
 import { Container, Row, Col, Card, CardImg, CardText, CardBody, CardTitle,  Button } from 'reactstrap';
-
+import { CartContext } from '../context3/Cart'
 class Products extends Component {
   constructor(props) {
     super(props);
@@ -30,7 +30,12 @@ class Products extends Component {
                 <CardBody>
                   <CardTitle tag="h5">{product.name}</CardTitle>
                   <CardText>{product.description}</CardText>
-                  <Button>Add to Cart</Button>
+                  <CartContext.Consumer>
+                    { ({addToCart}) => 
+                      <Button onClick={ () => addToCart(product) }>Add to Cart</Button>
+                    }
+                  </CartContext.Consumer>
+                  
                 </CardBody>
               </Card>
             </Col>
