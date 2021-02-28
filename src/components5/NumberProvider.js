@@ -5,14 +5,28 @@ export default class NumberProvider extends Component {
   constructor(props){
     super(props);
     this.state = {
-      number: 5
+      number: 5,
     }
     this.updateNumber = this.updateNumber.bind(this);
   }
 
   updateNumber() {
-    this.setState({
-      number: Math.floor(Math.random() * 10)
+    // this.setState({
+      // number: Math.floor(Math.random() * 10)
+    // })
+    // this.setState({
+      // number: Math.floor(Math.random() * 10)
+    // })
+
+    this.setState((state) => {
+      return {
+        number: state.number + 1
+      }
+    })
+    this.setState((state) => {
+      return {
+        number: state.number + 1
+      }
     })
   }
 
