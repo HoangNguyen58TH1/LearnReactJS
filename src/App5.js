@@ -1,10 +1,10 @@
 import React from 'react';
 // import List from './components5/List'
 // import Counter from './components5/Counter'
-import NumberProvider from './components5/NumberProvider'
-import NumberContext from './context5/NumberContext'
+import { NumberProvider } from './context5/NumberContext'
+import RandomNumber from './components5/RandomNumber'
 
-const data = ['Hoang', 'Nguyen', 'Van']
+// const data = ['Hoang', 'Nguyen', 'Van']
 
 const App5 = () => {
   return (
@@ -12,12 +12,7 @@ const App5 = () => {
       <div>
         {/* <List data={data} render={(item) => <div>{item}</div>} /> */}
 
-        <NumberContext.Consumer>
-          {({ number, updateNumber }) => <div>
-            <h1>{ number }</h1>
-            <button onClick={updateNumber}>Update Number</button>
-          </div> }
-        </NumberContext.Consumer>
+        <RandomNumber />
         
         {/* <Counter>
           { ({count}) => 
